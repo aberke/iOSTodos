@@ -22,6 +22,7 @@
 		A8D046DE17BB4017001E9657 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8D046DC17BB4017001E9657 /* InfoPlist.strings */; };
 		A8D046E117BB4017001E9657 /* todosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D046E017BB4017001E9657 /* todosTests.m */; };
 		A8D046EC17BB407C001E9657 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D046EB17BB407C001E9657 /* MainViewController.m */; };
+		A8D046FB17BDD66A001E9657 /* todosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D046FA17BDD66A001E9657 /* todosViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,9 @@
 		A8D046E017BB4017001E9657 /* todosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = todosTests.m; sourceTree = "<group>"; };
 		A8D046EA17BB407C001E9657 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A8D046EB17BB407C001E9657 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		A8D046F917BDD66A001E9657 /* todosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = todosViewController.h; sourceTree = "<group>"; };
+		A8D046FA17BDD66A001E9657 /* todosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = todosViewController.m; sourceTree = "<group>"; };
+		A8D046FC17C05949001E9657 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,9 @@
 			children = (
 				A8D046C417BB4017001E9657 /* todosAppDelegate.h */,
 				A8D046C517BB4017001E9657 /* todosAppDelegate.m */,
+				A8D046F917BDD66A001E9657 /* todosViewController.h */,
+				A8D046FA17BDD66A001E9657 /* todosViewController.m */,
+				A8D046FC17C05949001E9657 /* constants.h */,
 				A8D046EA17BB407C001E9657 /* MainViewController.h */,
 				A8D046EB17BB407C001E9657 /* MainViewController.m */,
 				A8D046BC17BB4017001E9657 /* Supporting Files */,
@@ -270,6 +277,7 @@
 				A8D046C217BB4017001E9657 /* main.m in Sources */,
 				A8D046C617BB4017001E9657 /* todosAppDelegate.m in Sources */,
 				A8D046EC17BB407C001E9657 /* MainViewController.m in Sources */,
+				A8D046FB17BDD66A001E9657 /* todosViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +450,7 @@
 				A8D046E617BB4017001E9657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8D046E717BB4017001E9657 /* Build configuration list for PBXNativeTarget "todosTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +459,7 @@
 				A8D046E917BB4017001E9657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
