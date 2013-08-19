@@ -17,7 +17,7 @@
 @property int undoneCount;
 @property (nonatomic, strong) NSMutableArray *undoneItems;
 
-@property (nonatomic, strong) UIScrollView *doneTodos;
+@property (nonatomic, strong) UIScrollView *doneTodosArea;
 @property (nonatomic, strong) UILabel *doneCountLabel;
 @property int doneCount;
 @property (nonatomic, strong) NSMutableArray *doneItems;

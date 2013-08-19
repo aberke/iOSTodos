@@ -7,6 +7,8 @@
 //
 
 #import "todosViewController.h"
+#import "undoneTodoItem.h"
+#import "TodoItem.h"
 #import <QuartzCore/QuartzCore.h>
 
 #import "constants.h"
@@ -23,13 +25,11 @@
     if (self) {
         // Custom initialization
         self.containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 320, 375)];
-        self.containerView.layer.borderColor = [UIColor blueColor].CGColor;
-        self.containerView.layer.borderWidth = 1.0f;
-        
+        // TAKE OUT AFTER DEBUGGING ####
+        [self debugMakeViewVisible:self.containerView];
+
         [self setupDoneTodos];
         [self setupUndoneTodos];
-        
-        
         
         
     }
@@ -47,46 +47,91 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) debugMakeViewVisible:(UIView *)view {
+    view.layer.borderColor = [UIColor blueColor].CGColor;
+    view.layer.borderWidth = 1.0f;
+    
+}
 - (void) setupDoneTodos {
     [self setupDoneCountLabel];
-}
 
+    self.doneItems = [[NSMutableArray alloc] init];
+    
+    self.doneTodosArea = [[UIScrollView alloc] initWithFrame:CGRectMake(5, 40, todosAreaContentWidth, 300)];
+    self.doneTodosArea.layer.borderWidth = 2;
+    self.doneTodosArea.layer.borderColor = [UIColor greenColor].CGColor;
+    self.doneTodosArea.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.5];
+    [self.view addSubview:self.doneTodosArea];
+    
+    [self.doneTodosArea setContentSize:CGSizeMake(todosAreaContentWidth, 10)];
+    
+    [self.containerView addSubview:self.doneTodosArea];
+}
 
 - (void) setupUndoneTodos {
     [self setupUndoneCountLabel];
     
     self.undoneItems = [[NSMutableArray alloc] init];
     
-    self.undoneTodosArea = [[UIScrollView alloc] initWithFrame:CGRectMake(175, 40, undoneTodosAreaContentWidth, 300)];
+    self.undoneTodosArea = [[UIScrollView alloc] initWithFrame:CGRectMake(175, 40, todosAreaContentWidth, 300)];
     self.undoneTodosArea.layer.borderWidth = 2;
     self.undoneTodosArea.layer.borderColor = [UIColor redColor].CGColor;
     self.undoneTodosArea.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5];
     [self.view addSubview:self.undoneTodosArea];
     
-    CGSize sViewContentSize = CGSizeMake(undoneTodosAreaContentWidth, 10);
-    [self.undoneTodosArea setContentSize:sViewContentSize];
+    [self.undoneTodosArea setContentSize:CGSizeMake(todosAreaContentWidth, 10)];
     
     [self.containerView addSubview:self.undoneTodosArea];
 }
-- (void) redrawUndoneTodos:(UIScrollView *) scrollView {
+- (void) redrawTodos:(UIScrollView *) scrollView withTodosArray:(NSMutableArray *)todosArray {
     // set scroll view height to match content
     CGFloat scrollViewHeight = 5.0f;
+    
+    // setup rectangle to be reused as frame for todos
+    CGRect todoItemRect = CGRectMake(todoItemMargin, todoItemMargin,todoItemWidth, todoItemHeight);
+    
+    BOOL (^itemDoneCallback)(NSObject<TodoItem>*_weak) = ^(NSObject<TodoItem>* item){
+        NSLog(@"Calling done callback with item with itemString: %@", item.itemString);
+        return YES;
+    };
+    BOOL (^itemDeleteCallback)(NSObject<TodoItem>*_weak) = ^(NSObject<TodoItem>* item){
+        NSLog(@"Calling delete callback with item with itemString: %@", item.itemString);
+        return YES;
+    };
+    
+    // remove all the old views
+    for(UIView *subview in [scrollView subviews]) {
+        [subview removeFromSuperview];
+    }
     
     for(int i = 0; i < self.undoneCount; i++){
         scrollViewHeight += (todoItemMargin + todoItemHeight);
         
-        UILabel *label =  [[UILabel alloc] initWithFrame: CGRectMake(todoItemMargin, (todoItemMargin + (todoItemMargin+todoItemHeight)*i),todoItemWidth, todoItemHeight)];
-        label.text = [self.undoneItems objectAtIndex:i];
-        [scrollView addSubview:label];
+        undoneTodoItem *item =  [[undoneTodoItem alloc] initWithFrame: todoItemRect withString:[self.undoneItems objectAtIndex:i] withDoneCallback:itemDoneCallback withDeleteCallback:itemDeleteCallback];
+        [scrollView addSubview:item];
+        
+        // make sure next label positioned below last
+        todoItemRect.origin.y += (todoItemHeight + todoItemMargin);
     }
     // set content size of scroll view
-    [scrollView setContentSize:(CGSizeMake(undoneTodosAreaContentWidth, scrollViewHeight))];
+    [scrollView setContentSize:(CGSizeMake(todosAreaContentWidth, scrollViewHeight))];
     
-    [self updateUndoneCountLabel];
+    
+}
+
+
+- (void) redrawDoneTodos:(UIScrollView *) scrollView {
+    [self redrawTodos:scrollView withTodosArray:self.doneItems];
+}
+- (void) redrawUndoneTodos:(UIScrollView *) scrollView {
+    [self redrawTodos:scrollView withTodosArray:self.undoneItems];
 }
 
 - (void) addTodo:(NSString *)todoString{
     self.undoneCount ++;
+    [self updateUndoneCountLabel];
+    
+   
     [self.undoneItems addObject:todoString];
     [self redrawUndoneTodos:self.undoneTodosArea];
 }
@@ -113,7 +158,26 @@
     [self updateUndoneCountLabel];
 }
 
+// callbacks for undone todos
+- (BOOL)undoneTodoItemDoneCallback:(undoneTodoItem *)item {
+    if(item){
+        
+        
+        
+        
+        return YES;
+    }
+    return NO;
+}
 
+- (BOOL)undoneTodoItemDeleteCallback:(undoneTodoItem *)item {
+    if(item){
+        
+        
+        return YES;
+    }
+    return NO;
+}
 
 
 

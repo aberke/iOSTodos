@@ -1,5 +1,5 @@
 //
-//  constants.h
+//  Constants.h
 //  todos
 //
 //  Created by Alexandra Berke on 8/17/13.
@@ -14,7 +14,7 @@
 #define todoItemHeight      30.0
 #define todoItemWidth       120.0
 
-#define undoneTodosAreaContentWidth 140.0
+#define todosAreaContentWidth 140.0
 
 
 

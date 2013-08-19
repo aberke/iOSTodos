@@ -1,0 +1,94 @@
+//
+//  undoneTodoItem.m
+//  todos
+//
+//  Created by Alexandra Berke on 8/18/13.
+//  Copyright (c) 2013 Alexandra Berke. All rights reserved.
+//
+
+#import "undoneTodoItem.h"
+#import "TodoItem.h"
+#import <QuartzCore/QuartzCore.h>
+
+@implementation undoneTodoItem: UIView
+
+- (void) doneButtonPressed {
+    BOOL ret = NO;
+    if(self.doneCallback){
+        ret = self.doneCallback(self);
+    }
+    NSLog(@"result of doneCallback: %i", ret);
+}
+
+- (void)setupDoneButtonWithFrame:(CGRect)frame{
+    
+    //create the button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    //set the position of the button
+    button.frame = frame;
+    
+    //set the button's title
+    [button setTitle:@"D" forState:UIControlStateNormal];
+    
+    //listen for clicks
+    [button addTarget:self action:@selector(doneButtonPressed)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    //add the button to the view
+    [self addSubview:button];
+}
+- (void)setupLabelWithFrame:(CGRect)frame {
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.text = self.itemString;
+    [self addSubview:label];
+}
+
+- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(BOOL(^)(NSObject<TodoItem>*))doneCallback withDeleteCallback:(BOOL(^)(NSObject<TodoItem>*))deleteCallback
+{
+    self = [self initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        
+        self.layer.borderWidth = 1;
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        
+        self.itemString = itemString;
+        
+        self.doneCallback = doneCallback;
+        self.deleteCallback = deleteCallback;
+        
+        
+        float todoItemDoneButtonWidth = 20.0f;
+        float todoItemDoneButtonHeight = 20.0f;
+        
+        [self setupDoneButtonWithFrame:CGRectMake(0,0,todoItemDoneButtonWidth,todoItemDoneButtonHeight)];
+        
+        [self setupLabelWithFrame:CGRectMake(todoItemDoneButtonWidth,0,(frame.size.width - todoItemDoneButtonWidth), (frame.size.height))];
+
+
+    
+    }
+    return self;
+}
+
+
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end

@@ -23,6 +23,7 @@
 		A8D046E117BB4017001E9657 /* todosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D046E017BB4017001E9657 /* todosTests.m */; };
 		A8D046EC17BB407C001E9657 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D046EB17BB407C001E9657 /* MainViewController.m */; };
 		A8D046FB17BDD66A001E9657 /* todosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D046FA17BDD66A001E9657 /* todosViewController.m */; };
+		A8D046FF17C1B55C001E9657 /* undoneTodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +60,10 @@
 		A8D046EB17BB407C001E9657 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		A8D046F917BDD66A001E9657 /* todosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = todosViewController.h; sourceTree = "<group>"; };
 		A8D046FA17BDD66A001E9657 /* todosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = todosViewController.m; sourceTree = "<group>"; };
-		A8D046FC17C05949001E9657 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		A8D046FD17C1B55C001E9657 /* undoneTodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = undoneTodoItem.h; sourceTree = "<group>"; };
+		A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = undoneTodoItem.m; sourceTree = "<group>"; };
+		A8D0470117C2AB79001E9657 /* TodoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TodoItem.h; path = ../TodoItem.h; sourceTree = "<group>"; };
+		A8E8F23817C2B7B900888099 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,11 +123,14 @@
 		A8D046BB17BB4017001E9657 /* todos */ = {
 			isa = PBXGroup;
 			children = (
+				A8E8F23817C2B7B900888099 /* Constants.h */,
 				A8D046C417BB4017001E9657 /* todosAppDelegate.h */,
+				A8D0470117C2AB79001E9657 /* TodoItem.h */,
 				A8D046C517BB4017001E9657 /* todosAppDelegate.m */,
 				A8D046F917BDD66A001E9657 /* todosViewController.h */,
 				A8D046FA17BDD66A001E9657 /* todosViewController.m */,
-				A8D046FC17C05949001E9657 /* constants.h */,
+				A8D046FD17C1B55C001E9657 /* undoneTodoItem.h */,
+				A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */,
 				A8D046EA17BB407C001E9657 /* MainViewController.h */,
 				A8D046EB17BB407C001E9657 /* MainViewController.m */,
 				A8D046BC17BB4017001E9657 /* Supporting Files */,
@@ -278,6 +285,7 @@
 				A8D046C617BB4017001E9657 /* todosAppDelegate.m in Sources */,
 				A8D046EC17BB407C001E9657 /* MainViewController.m in Sources */,
 				A8D046FB17BDD66A001E9657 /* todosViewController.m in Sources */,
+				A8D046FF17C1B55C001E9657 /* undoneTodoItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
