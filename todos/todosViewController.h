@@ -17,16 +17,16 @@
 
 @property (nonatomic, strong) UIView *containerView;
 
-@property (nonatomic, strong) UIScrollView *undoneTodosArea;
 @property (nonatomic, strong) UILabel *undoneCountLabel;
 @property int undoneCount;
 @property (nonatomic, strong) NSMutableArray *undoneItems;
 
-@property (nonatomic, strong) UIScrollView *doneTodosArea;
 @property (nonatomic, strong) UILabel *doneCountLabel;
 @property int doneCount;
 @property (nonatomic, strong) NSMutableArray *doneItems;
 
+
+@property (nonatomic, strong) UIScrollView *todosArea;
 
 - (void) addTodo:(NSString *)todoString;
 
