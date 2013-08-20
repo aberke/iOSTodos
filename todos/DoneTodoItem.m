@@ -13,7 +13,10 @@
 - (void) setupLabelwithFrame:(CGRect)frame {
     // setup label
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.text = self.itemString;
+    
+    NSAttributedString *attributedItemString = [[NSAttributedString alloc] initWithString:self.itemString attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:NSUnderlineStyleSingle],NSStrikethroughStyleAttributeName,nil]];
+    
+    label.attributedText = attributedItemString;
     [self addSubview:label];
 }
 
