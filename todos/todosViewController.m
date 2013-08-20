@@ -8,6 +8,7 @@
 
 #import "todosViewController.h"
 #import "undoneTodoItem.h"
+#import "DoneTodoItem.h"
 #import <QuartzCore/QuartzCore.h>
 
 #import "constants.h"
@@ -119,7 +120,7 @@
     
     [self.containerView addSubview:self.undoneTodosArea];
 }
-- (void) redrawTodos:(UIScrollView *) scrollView withTodosArray:(NSMutableArray *)todosArray {
+- (void) redrawTodos:(UIScrollView *) scrollView withTodosArray:(NSMutableArray *)todosArray withItemInitBlock:(id(^)(CGRect frame, NSString *itemString))itemInitBlock{
     // set scroll view height to match content
     CGFloat scrollViewHeight = 5.0f;
     
@@ -136,7 +137,9 @@
     for(int i = 0; i < [todosArray count]; i++){
         scrollViewHeight += (todoItemMargin + todoItemHeight);
         
-        undoneTodoItem *item =  [[undoneTodoItem alloc] initWithFrame: todoItemRect withString:[todosArray objectAtIndex:i] withDoneCallback:self.itemDoneCallback withDeleteCallback:self.itemDeletedCallback];
+        undoneTodoItem *item = itemInitBlock(todoItemRect, [todosArray objectAtIndex:i]);
+        /*[[undoneTodoItem alloc] initWithFrame: todoItemRect withString:[todosArray objectAtIndex:i] withDoneCallback:self.itemDoneCallback withDeleteCallback:self.itemDeletedCallback];
+        */
         [scrollView addSubview:item];
         
         // make sure next label positioned below last
@@ -150,10 +153,20 @@
 
 
 - (void) redrawDoneTodos{
-    [self redrawTodos:self.doneTodosArea withTodosArray:self.doneItems];
+    id (^itemInitBlock)(CGRect, NSString*) = ^(CGRect frame, NSString *itemString){
+        DoneTodoItem *item =  [[DoneTodoItem alloc] initWithFrame: frame withString:itemString];
+        
+        return item;
+    };
+    [self redrawTodos:self.doneTodosArea withTodosArray:self.doneItems withItemInitBlock:itemInitBlock];
 }
 - (void) redrawUndoneTodos{
-    [self redrawTodos:self.undoneTodosArea withTodosArray:self.undoneItems];
+    id (^itemInitBlock)(CGRect, NSString*) = ^(CGRect frame, NSString *itemString){
+        undoneTodoItem *item =  [[undoneTodoItem alloc] initWithFrame: frame withString:itemString withDoneCallback:self.itemDoneCallback withDeleteCallback:self.itemDeletedCallback];
+        
+        return item;
+    };
+    [self redrawTodos:self.undoneTodosArea withTodosArray:self.undoneItems withItemInitBlock:itemInitBlock];
 }
 
 - (void) addTodo:(NSString *)todoString{

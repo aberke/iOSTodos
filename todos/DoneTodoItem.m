@@ -8,7 +8,23 @@
 
 #import "DoneTodoItem.h"
 
-@implementation DoneTodoItem
+@implementation DoneTodoItem 
+
+- (void) setupLabelwithFrame:(CGRect)frame {
+    // setup label
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.text = self.itemString;
+    [self addSubview:label];
+}
+
+- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString{
+    self = [self initWithFrame:frame];
+    if (self) {
+        self.itemString = itemString;
+        [self setupLabelwithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
+    }
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {

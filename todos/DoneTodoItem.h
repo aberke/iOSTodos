@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TodoItem.h"
 
-@interface DoneTodoItem : UIView
+@interface DoneTodoItem : UIView <TodoItem>
+
+@property NSString *itemString;
+
+- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString;
 
 @end
