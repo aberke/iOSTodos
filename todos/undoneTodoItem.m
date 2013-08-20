@@ -17,7 +17,27 @@
         self.doneCallback(self);
     }
 }
-
+- (void) deleteButtonPressed {
+    if(self.deletedCallback){
+        self.deletedCallback(self);
+    }
+}
+- (void) setupDeleteButtonWithFrame:(CGRect) frame{
+    //create the button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    //set the position of the button
+    button.frame = frame;
+    
+    //set the button's title
+    [button setTitle:@"X" forState:UIControlStateNormal];
+    
+    //listen for clicks
+    [button addTarget:self action:@selector(deleteButtonPressed)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    //add the button to the view
+    [self addSubview:button];
+}
 - (void)setupDoneButtonWithFrame:(CGRect)frame{
     
     //create the button
@@ -34,6 +54,9 @@
     
     //add the button to the view
     [self addSubview:button];
+    
+    
+    
 }
 - (void)setupLabelWithFrame:(CGRect)frame {
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
@@ -59,11 +82,14 @@
         float todoItemDoneButtonWidth = 20.0f;
         float todoItemDoneButtonHeight = 20.0f;
         
+        float todoItemDeleteButtonWidth = 15.0f;
+        float todoItemDeleteButtonHeight = 15.0f;
+        
         [self setupDoneButtonWithFrame:CGRectMake(0,0,todoItemDoneButtonWidth,todoItemDoneButtonHeight)];
         
-        [self setupLabelWithFrame:CGRectMake(todoItemDoneButtonWidth,0,(frame.size.width - todoItemDoneButtonWidth), (frame.size.height))];
+        [self setupLabelWithFrame:CGRectMake(todoItemDoneButtonWidth,0,(frame.size.width - todoItemDoneButtonWidth - todoItemDeleteButtonWidth), (frame.size.height))];
 
-
+        [self setupDeleteButtonWithFrame:CGRectMake((frame.size.width-todoItemDeleteButtonWidth), 0, todoItemDeleteButtonWidth, todoItemDeleteButtonHeight)];
     
     }
     return self;
