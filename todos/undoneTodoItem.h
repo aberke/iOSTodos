@@ -11,9 +11,9 @@
 
 @interface undoneTodoItem : UIView <TodoItem>
 
+@property (nonatomic, copy) ItemCallback doneCallback;
+@property (nonatomic, copy) ItemCallback deletedCallback;
 
-@property (copy) BOOL (^deleteCallback)(NSObject<TodoItem>*);
-@property (copy) BOOL (^doneCallback)(NSObject<TodoItem>*);
 
 @property NSString *itemString;
 

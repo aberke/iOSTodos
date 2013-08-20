@@ -8,7 +8,6 @@
 
 #import "todosViewController.h"
 #import "undoneTodoItem.h"
-#import "TodoItem.h"
 #import <QuartzCore/QuartzCore.h>
 
 #import "constants.h"
@@ -27,6 +26,8 @@
         self.containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 320, 375)];
         // TAKE OUT AFTER DEBUGGING ####
         [self debugMakeViewVisible:self.containerView];
+        
+        [self setupCallbacks];
 
         [self setupDoneTodos];
         [self setupUndoneTodos];
@@ -51,6 +52,41 @@
     view.layer.borderColor = [UIColor blueColor].CGColor;
     view.layer.borderWidth = 1.0f;
     
+}
+- (BOOL) completeTodoItem:(NSObject<TodoItem> *)item{
+    NSLog(@"Calling done callback with item with itemString: %@", item.itemString);
+    
+    self.undoneCount --;
+    self.doneCount ++;
+    [self updateUndoneCountLabel];
+    [self updateDoneCountLabel];
+    
+    [self.undoneItems removeObject:item.itemString];
+    [self.doneItems addObject:item.itemString];
+    [self redrawUndoneTodos];
+    [self redrawDoneTodos];
+        
+    return YES;
+}
+- (BOOL) deleteTodoItem:(NSObject<TodoItem> *)item{
+    NSLog(@"Calling delete callback with item with itemString: %@", item.itemString);
+    
+    self.undoneCount --;
+    [self.undoneItems removeObject:item.itemString];
+    [self redrawUndoneTodos];
+    
+    return YES;
+}
+- (void) setupCallbacks {
+    // use weakself in blocks to avoid strong reference cycles
+    todosViewController * __weak weakSelf = self;
+    
+    self.itemDoneCallback = ^(NSObject<TodoItem>* item){
+        return [weakSelf completeTodoItem:item];
+    };
+    self.itemDeletedCallback = ^(NSObject<TodoItem>* item){
+        return [weakSelf deleteTodoItem:item];
+    };
 }
 - (void) setupDoneTodos {
     [self setupDoneCountLabel];
@@ -90,24 +126,17 @@
     // setup rectangle to be reused as frame for todos
     CGRect todoItemRect = CGRectMake(todoItemMargin, todoItemMargin,todoItemWidth, todoItemHeight);
     
-    BOOL (^itemDoneCallback)(NSObject<TodoItem>*_weak) = ^(NSObject<TodoItem>* item){
-        NSLog(@"Calling done callback with item with itemString: %@", item.itemString);
-        return YES;
-    };
-    BOOL (^itemDeleteCallback)(NSObject<TodoItem>*_weak) = ^(NSObject<TodoItem>* item){
-        NSLog(@"Calling delete callback with item with itemString: %@", item.itemString);
-        return YES;
-    };
+
     
     // remove all the old views
     for(UIView *subview in [scrollView subviews]) {
         [subview removeFromSuperview];
     }
     
-    for(int i = 0; i < self.undoneCount; i++){
+    for(int i = 0; i < [todosArray count]; i++){
         scrollViewHeight += (todoItemMargin + todoItemHeight);
         
-        undoneTodoItem *item =  [[undoneTodoItem alloc] initWithFrame: todoItemRect withString:[self.undoneItems objectAtIndex:i] withDoneCallback:itemDoneCallback withDeleteCallback:itemDeleteCallback];
+        undoneTodoItem *item =  [[undoneTodoItem alloc] initWithFrame: todoItemRect withString:[todosArray objectAtIndex:i] withDoneCallback:self.itemDoneCallback withDeleteCallback:self.itemDeletedCallback];
         [scrollView addSubview:item];
         
         // make sure next label positioned below last
@@ -120,11 +149,11 @@
 }
 
 
-- (void) redrawDoneTodos:(UIScrollView *) scrollView {
-    [self redrawTodos:scrollView withTodosArray:self.doneItems];
+- (void) redrawDoneTodos{
+    [self redrawTodos:self.doneTodosArea withTodosArray:self.doneItems];
 }
-- (void) redrawUndoneTodos:(UIScrollView *) scrollView {
-    [self redrawTodos:scrollView withTodosArray:self.undoneItems];
+- (void) redrawUndoneTodos{
+    [self redrawTodos:self.undoneTodosArea withTodosArray:self.undoneItems];
 }
 
 - (void) addTodo:(NSString *)todoString{
@@ -133,7 +162,7 @@
     
    
     [self.undoneItems addObject:todoString];
-    [self redrawUndoneTodos:self.undoneTodosArea];
+    [self redrawUndoneTodos];
 }
 - (void) updateDoneCountLabel {
     self.doneCountLabel.text = [NSString stringWithFormat:@"%i", self.doneCount];
@@ -156,27 +185,6 @@
     self.undoneCountLabel.textAlignment = NSTextAlignmentCenter;
     [self.containerView addSubview:self.undoneCountLabel];
     [self updateUndoneCountLabel];
-}
-
-// callbacks for undone todos
-- (BOOL)undoneTodoItemDoneCallback:(undoneTodoItem *)item {
-    if(item){
-        
-        
-        
-        
-        return YES;
-    }
-    return NO;
-}
-
-- (BOOL)undoneTodoItemDeleteCallback:(undoneTodoItem *)item {
-    if(item){
-        
-        
-        return YES;
-    }
-    return NO;
 }
 
 

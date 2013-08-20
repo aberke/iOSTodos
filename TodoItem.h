@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @protocol TodoItem <NSObject>
 
 @property NSString *itemString;
 
 @end
+
+typedef BOOL(^ItemCallback)(NSObject<TodoItem>* item);

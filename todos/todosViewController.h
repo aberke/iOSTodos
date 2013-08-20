@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TodoItem.h"
+
 
 @interface todosViewController : UIViewController
+
+@property (nonatomic, copy) ItemCallback itemDoneCallback;
+@property (nonatomic, copy) ItemCallback itemDeletedCallback;
 
 @property (nonatomic, strong) UIView *containerView;
 

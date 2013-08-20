@@ -13,11 +13,9 @@
 @implementation undoneTodoItem: UIView
 
 - (void) doneButtonPressed {
-    BOOL ret = NO;
     if(self.doneCallback){
-        ret = self.doneCallback(self);
+        self.doneCallback(self);
     }
-    NSLog(@"result of doneCallback: %i", ret);
 }
 
 - (void)setupDoneButtonWithFrame:(CGRect)frame{
@@ -43,7 +41,7 @@
     [self addSubview:label];
 }
 
-- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(BOOL(^)(NSObject<TodoItem>*))doneCallback withDeleteCallback:(BOOL(^)(NSObject<TodoItem>*))deleteCallback
+- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(ItemCallback)doneCallback withDeleteCallback:(ItemCallback)deleteCallback
 {
     self = [self initWithFrame:frame];
     if (self) {
@@ -55,7 +53,7 @@
         self.itemString = itemString;
         
         self.doneCallback = doneCallback;
-        self.deleteCallback = deleteCallback;
+        self.deletedCallback = deleteCallback;
         
         
         float todoItemDoneButtonWidth = 20.0f;

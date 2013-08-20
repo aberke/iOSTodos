@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A896222617C3106500C2389E /* DoneTodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A896222517C3106500C2389E /* DoneTodoItem.m */; };
 		A8D046B617BB4017001E9657 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B517BB4017001E9657 /* UIKit.framework */; };
 		A8D046B817BB4017001E9657 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B717BB4017001E9657 /* Foundation.framework */; };
 		A8D046BA17BB4017001E9657 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B917BB4017001E9657 /* CoreGraphics.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A896222417C3106500C2389E /* DoneTodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneTodoItem.h; sourceTree = "<group>"; };
+		A896222517C3106500C2389E /* DoneTodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneTodoItem.m; sourceTree = "<group>"; };
 		A8D046B217BB4017001E9657 /* todos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D046B517BB4017001E9657 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A8D046B717BB4017001E9657 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +133,8 @@
 				A8D046F917BDD66A001E9657 /* todosViewController.h */,
 				A8D046FA17BDD66A001E9657 /* todosViewController.m */,
 				A8D046FD17C1B55C001E9657 /* undoneTodoItem.h */,
+				A896222417C3106500C2389E /* DoneTodoItem.h */,
+				A896222517C3106500C2389E /* DoneTodoItem.m */,
 				A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */,
 				A8D046EA17BB407C001E9657 /* MainViewController.h */,
 				A8D046EB17BB407C001E9657 /* MainViewController.m */,
@@ -286,6 +291,7 @@
 				A8D046EC17BB407C001E9657 /* MainViewController.m in Sources */,
 				A8D046FB17BDD66A001E9657 /* todosViewController.m in Sources */,
 				A8D046FF17C1B55C001E9657 /* undoneTodoItem.m in Sources */,
+				A896222617C3106500C2389E /* DoneTodoItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
