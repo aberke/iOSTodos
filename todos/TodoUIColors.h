@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TodoUIColors : UIColor
+@interface UIColor (TodoUIColors)
+
++ (UIColor *)backgroundYellowColor;
++(UIColor *)lightBlueColor;
++(UIColor *)mediumBlueColor;
 
 @end
