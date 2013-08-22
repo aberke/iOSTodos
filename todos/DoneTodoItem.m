@@ -13,10 +13,12 @@
 - (void) setupLabelwithFrame:(CGRect)frame {
     // setup label
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.backgroundColor = [UIColor clearColor];
     
     NSAttributedString *attributedItemString = [[NSAttributedString alloc] initWithString:self.itemString attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:NSUnderlineStyleSingle],NSStrikethroughStyleAttributeName,nil]];
     
     label.attributedText = attributedItemString;
+    label.textColor = [UIColor brownColor];
     [self addSubview:label];
 }
 

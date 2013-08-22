@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A896222617C3106500C2389E /* DoneTodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A896222517C3106500C2389E /* DoneTodoItem.m */; };
+		A896222A17C54A1F00C2389E /* yellowslide.png in Resources */ = {isa = PBXBuildFile; fileRef = A896222917C54A1F00C2389E /* yellowslide.png */; };
+		A896222D17C5993A00C2389E /* TodoUIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A896222C17C5993A00C2389E /* TodoUIColors.m */; };
+		A896222F17C5C37100C2389E /* icon-blueHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = A896222E17C5C37100C2389E /* icon-blueHeart.png */; };
+		A896223117C5C50C00C2389E /* icon-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = A896223017C5C50C00C2389E /* icon-checkmark.png */; };
+		A896223317C5C58C00C2389E /* delete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A896223217C5C58C00C2389E /* delete_icon.png */; };
+		A896224217C5CB0F00C2389E /* transparent-slider.png in Resources */ = {isa = PBXBuildFile; fileRef = A896224117C5CB0F00C2389E /* transparent-slider.png */; };
 		A8D046B617BB4017001E9657 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B517BB4017001E9657 /* UIKit.framework */; };
 		A8D046B817BB4017001E9657 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B717BB4017001E9657 /* Foundation.framework */; };
 		A8D046BA17BB4017001E9657 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B917BB4017001E9657 /* CoreGraphics.framework */; };
@@ -41,6 +47,13 @@
 		A896222417C3106500C2389E /* DoneTodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneTodoItem.h; sourceTree = "<group>"; };
 		A896222517C3106500C2389E /* DoneTodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneTodoItem.m; sourceTree = "<group>"; };
 		A896222717C3B9DF00C2389E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A896222917C54A1F00C2389E /* yellowslide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowslide.png; path = images/yellowslide.png; sourceTree = SOURCE_ROOT; };
+		A896222B17C5993A00C2389E /* TodoUIColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoUIColors.h; sourceTree = "<group>"; };
+		A896222C17C5993A00C2389E /* TodoUIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoUIColors.m; sourceTree = "<group>"; };
+		A896222E17C5C37100C2389E /* icon-blueHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-blueHeart.png"; path = "images/icon-blueHeart.png"; sourceTree = SOURCE_ROOT; };
+		A896223017C5C50C00C2389E /* icon-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-checkmark.png"; path = "images/icon-checkmark.png"; sourceTree = SOURCE_ROOT; };
+		A896223217C5C58C00C2389E /* delete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_icon.png; path = images/delete_icon.png; sourceTree = SOURCE_ROOT; };
+		A896224117C5CB0F00C2389E /* transparent-slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "transparent-slider.png"; path = "images/transparent-slider.png"; sourceTree = SOURCE_ROOT; };
 		A8D046B217BB4017001E9657 /* todos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D046B517BB4017001E9657 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A8D046B717BB4017001E9657 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,6 +106,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A896222817C5499600C2389E /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A896224117C5CB0F00C2389E /* transparent-slider.png */,
+				A896223217C5C58C00C2389E /* delete_icon.png */,
+				A896223017C5C50C00C2389E /* icon-checkmark.png */,
+				A896222E17C5C37100C2389E /* icon-blueHeart.png */,
+				A896222917C54A1F00C2389E /* yellowslide.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		A8D046A917BB4017001E9657 = {
 			isa = PBXGroup;
 			children = (
@@ -136,8 +161,11 @@
 				A896222417C3106500C2389E /* DoneTodoItem.h */,
 				A896222517C3106500C2389E /* DoneTodoItem.m */,
 				A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */,
+				A896222B17C5993A00C2389E /* TodoUIColors.h */,
+				A896222C17C5993A00C2389E /* TodoUIColors.m */,
 				A8D046EA17BB407C001E9657 /* MainViewController.h */,
 				A8D046EB17BB407C001E9657 /* MainViewController.m */,
+				A896222817C5499600C2389E /* images */,
 				A8D046BC17BB4017001E9657 /* Supporting Files */,
 			);
 			path = todos;
@@ -252,6 +280,11 @@
 				A8D046C817BB4017001E9657 /* Default.png in Resources */,
 				A8D046CA17BB4017001E9657 /* Default@2x.png in Resources */,
 				A8D046CC17BB4017001E9657 /* Default-568h@2x.png in Resources */,
+				A896222A17C54A1F00C2389E /* yellowslide.png in Resources */,
+				A896222F17C5C37100C2389E /* icon-blueHeart.png in Resources */,
+				A896223117C5C50C00C2389E /* icon-checkmark.png in Resources */,
+				A896223317C5C58C00C2389E /* delete_icon.png in Resources */,
+				A896224217C5CB0F00C2389E /* transparent-slider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +325,7 @@
 				A8D046FB17BDD66A001E9657 /* todosViewController.m in Sources */,
 				A8D046FF17C1B55C001E9657 /* undoneTodoItem.m in Sources */,
 				A896222617C3106500C2389E /* DoneTodoItem.m in Sources */,
+				A896222D17C5993A00C2389E /* TodoUIColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

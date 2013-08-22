@@ -14,6 +14,8 @@
 
 @property (nonatomic, copy) ItemCallback itemDoneCallback;
 @property (nonatomic, copy) ItemCallback itemDeletedCallback;
+@property (nonatomic, copy) ItemCallback itemUpCallback;
+@property (nonatomic, copy) ItemCallback itemDownCallback;
 
 @property (nonatomic, strong) UIView *containerView;
 

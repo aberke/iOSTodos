@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "todosViewController.h"
+#import "TodoUIColors.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MainViewController ()
@@ -37,7 +38,7 @@
     
     /* set up where items go */
     float labelX = 10.0f;
-    float labelY = 20.0f;
+    float labelY = 15.0f;
     float labelWidth = 55.0f;
     float labelHeight = 30.0f;
     
@@ -49,6 +50,8 @@
     /******* set up label *******************/
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(labelX, labelY, labelWidth, labelHeight)];
     label.text = @"+ Add:";
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor mediumBlueColor];
     [self.view addSubview:label];
     
     
@@ -59,6 +62,8 @@
     [self.view addSubview:self.textField];
     /***** setting up textField above ********/
     
+    /* style */
+    self.view.layer.backgroundColor = [UIColor backgroundYellowColor].CGColor;
     
     /************************************************************/
     self.todosViewController = [[todosViewController alloc] init];
