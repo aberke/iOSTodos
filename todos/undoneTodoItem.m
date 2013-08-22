@@ -9,47 +9,27 @@
 #import "undoneTodoItem.h"
 #import "TodoItem.h"
 #import "TodoUIColors.h"
+#import "UIButtonExtension.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation undoneTodoItem: UIView
 
-
 - (void) setupDeleteButtonWithFrame:(CGRect) frame{
-    //create the button
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    //set the position of the button
-    button.frame = frame;
-    
-    button.backgroundColor = [UIColor clearColor];
-    [button setImage: [UIImage imageNamed:@"delete_icon.png"] forState:UIControlStateNormal];
-    
-    //listen for clicks
-    [button addTarget:self action:@selector(deleteButtonPressed)
-     forControlEvents:UIControlEventTouchUpInside];
+    UIButton *button = [UIButton buttonWithFrame:frame withImageName:@"delete_icon.png" withCallback:@selector(deleteButtonPressed) withTarget:self];
     
     //add the button to the view
     [self addSubview:button];
 }
 - (void)setupUpDownButtonsWithFrame:(CGRect)frame{
-    
     //setup up button
     CGRect buttonFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, (frame.size.height/2));
-    UIButton *upButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    upButton.frame = buttonFrame;
-    [upButton setImage:[UIImage imageNamed:@"arrow-up-brown.png"] forState:UIControlStateNormal];
-    [upButton addTarget:self action:@selector(upButtonPressed)
-     forControlEvents:UIControlEventTouchUpInside];
+    UIButton *upButton = [UIButton buttonWithFrame:buttonFrame withImageName:@"arrow-up-brown.png" withCallback:@selector(upButtonPressed) withTarget:self];
     [self addSubview:upButton];
     
     // setup down button
     buttonFrame.origin.y = frame.origin.y + buttonFrame.size.height;
-    UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    downButton.frame = buttonFrame;
-    [downButton setImage:[UIImage imageNamed:@"arrow-down-brown.png"] forState:UIControlStateNormal];
-    [downButton addTarget:self action:@selector(downButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *downButton = [UIButton buttonWithFrame:buttonFrame withImageName:@"arrow-down-brown.png" withCallback:@selector(downButtonPressed) withTarget:self];
     [self addSubview:downButton];
-    
-    
 }
 - (void)sliderAction:(id)sender{
     UISlider *slider = (UISlider *)sender;

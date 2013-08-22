@@ -24,4 +24,6 @@
 
 - (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(BOOL(^)(NSObject<TodoItem>*))doneCallback withDeleteCallback:(BOOL(^)(NSObject<TodoItem>*))deleteCallback;
 
+- (void) deleteButtonPressed;
+
 @end
