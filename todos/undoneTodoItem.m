@@ -14,6 +14,54 @@
 
 @implementation undoneTodoItem: UIView
 
+- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString{
+    self = [self initWithFrame:frame];
+    if (self){
+        
+        //self.layer.borderWidth = 1;
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        
+        self.itemString = itemString;
+        
+        
+        float todoItemButtonWidth = 20.0f;
+        float todoItemButtonHeight = 20.0f;
+        float todoItemMargin = 10.0f;
+        
+        float upDownButtonsWidth = 30.0f;
+        float upDownButtonsHeight = frame.size.height - (2*todoItemMargin);
+        
+        float todoItemLabelWidth = frame.size.width*(2.0/3);
+        float todoItemSliderWidth = todoItemLabelWidth + todoItemButtonWidth;
+        
+        float itemOriginX = 0.0f;
+        
+        [self setupUpDownButtonsWithFrame:CGRectMake(itemOriginX,todoItemMargin,upDownButtonsWidth,upDownButtonsHeight)];
+        itemOriginX += (upDownButtonsWidth +todoItemMargin);
+        
+        
+        [self setupLabelWithFrame:CGRectMake((itemOriginX+todoItemButtonWidth),0,todoItemLabelWidth, (frame.size.height))];
+        [self setupSliderWithFrame:CGRectMake(itemOriginX,todoItemMargin, todoItemSliderWidth, 10.0)];
+        itemOriginX += (todoItemSliderWidth+todoItemButtonWidth);
+        
+        [self setupDeleteButtonWithFrame:CGRectMake(itemOriginX, todoItemMargin, todoItemButtonWidth, todoItemButtonHeight)];
+        
+    }
+    return self;
+}
+- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(ItemCallback)doneCallback withDeleteCallback:(ItemCallback)deleteCallback{
+    self = [self initWithFrame:frame withString:itemString];
+    if (self) {
+        self.doneCallback = doneCallback;
+        self.deletedCallback = deleteCallback;
+    }
+    return self;
+}
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    return self;
+}
+
 - (void) setupDeleteButtonWithFrame:(CGRect) frame{
     UIButton *button = [UIButton buttonWithFrame:frame withImageName:@"delete_icon.png" withCallback:@selector(deleteButtonPressed) withTarget:self];
     
@@ -65,79 +113,13 @@
     [self addSubview:label];
      
 }
-- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString{
-    self = [self initWithFrame:frame];
-    if (self){
-        
-        //self.layer.borderWidth = 1;
-        self.layer.borderColor = [UIColor blackColor].CGColor;
-        
-        self.itemString = itemString;
-        
-        
-        float todoItemButtonWidth = 20.0f;
-        float todoItemButtonHeight = 20.0f;
-        float todoItemMargin = 10.0f;
-        
-        float upDownButtonsWidth = 30.0f;
-        float upDownButtonsHeight = frame.size.height - (2*todoItemMargin);
-        
-        float todoItemLabelWidth = frame.size.width*(2.0/3);
-        float todoItemSliderWidth = todoItemLabelWidth + todoItemButtonWidth;
-        
-        float itemOriginX = 0.0f;
-        
-        [self setupUpDownButtonsWithFrame:CGRectMake(itemOriginX,todoItemMargin,upDownButtonsWidth,upDownButtonsHeight)];
-        itemOriginX += (upDownButtonsWidth +todoItemMargin);
-        
-        
-        [self setupLabelWithFrame:CGRectMake((itemOriginX+todoItemButtonWidth),0,todoItemLabelWidth, (frame.size.height))];
-        [self setupSliderWithFrame:CGRectMake(itemOriginX,todoItemMargin, todoItemSliderWidth, 10.0)];
-        itemOriginX += (todoItemSliderWidth+todoItemButtonWidth);
-        
-        [self setupDeleteButtonWithFrame:CGRectMake(itemOriginX, todoItemMargin, todoItemButtonWidth, todoItemButtonHeight)];
-        
-    }
-    return self;
-}
-- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(ItemCallback)doneCallback withDeleteCallback:(ItemCallback)deleteCallback{
-    self = [self initWithFrame:frame withString:itemString];
-    if (self) {
-        self.doneCallback = doneCallback;
-        self.deletedCallback = deleteCallback;
-    }
-    return self;
-}
-
-
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 
 -(void)upButtonPressed {
-    NSLog(@"UP");
     if (self.upCallback){
         self.upCallback(self);
     }
 }
 -(void)downButtonPressed{
-    NSLog(@"Down");
     if (self.downCallback){
         self.downCallback(self);
     }

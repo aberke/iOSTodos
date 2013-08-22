@@ -46,7 +46,6 @@
     // Dispose of any resources that can be recreated.
 }
 - (BOOL) completeTodoItem:(NSObject<TodoItem> *)item{
-    NSLog(@"Calling done callback with item with itemString: %@", item.itemString);
     
     self.undoneCount --;
     self.doneCount ++;
