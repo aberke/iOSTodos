@@ -26,7 +26,7 @@ float countLabelUnderlineHeight = 2.0f;
 
 float todoItemWidth = 310.0f;
 float undoneTodoItemHeight = 40.0f;
-float doneTodoItemHeight = 30.0f;
+float doneTodoItemHeight = 20.0f;
 
 /* specifically for TodoItem */
 float todoItemButtonWidth = 20.0f;
@@ -38,7 +38,7 @@ float upDownButtonsHeight = 20.0f;
 float upDownButtonsOriginX = 0.0f;
 
 float todoItemLabelWidth = 205.0f;
-float todoItemLabelOriginX = 70.0f;
+float todoItemLabelOriginX = 60.0f;
 float todoItemSliderWidth = 225.0f;
 float todoItemSliderOriginX = 50.0f;
 
