@@ -7,12 +7,10 @@
 //
 
 #import "DoneTodoItem.h"
-#import <QuartzCore/QuartzCore.h>
 
 @implementation DoneTodoItem 
 
 - (void) setupLabelwithFrame:(CGRect)frame {
-    // setup label
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.backgroundColor = [UIColor clearColor];
     
@@ -27,7 +25,7 @@
     self = [self initWithFrame:frame];
     if (self) {
         self.itemString = itemString;
-        [self setupLabelwithFrame:CGRectMake(60.0,0,205.0,frame.size.height)];
+        [self setupLabelwithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
     }
     return self;
 }
