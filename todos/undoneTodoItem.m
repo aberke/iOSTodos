@@ -30,20 +30,13 @@
     //add the button to the view
     [self addSubview:button];
 }
-- (void)stylizeUpDownButton:(UIButton *)button withFrame:(CGRect)frame{
-    [button.layer setBackgroundColor: [UIColor lightBlueColor].CGColor];
-    [button.layer setBorderColor:[UIColor mediumBlueColor].CGColor];
-    [button.layer setBorderWidth:1.0];
-    [button setTitleColor:[UIColor mediumBlueColor] forState:UIControlStateNormal];
-    button.frame = frame;
-}
 - (void)setupUpDownButtonsWithFrame:(CGRect)frame{
     
     //setup up button
     CGRect buttonFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, (frame.size.height/2));
     UIButton *upButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self stylizeUpDownButton:upButton withFrame:buttonFrame];
-    [upButton setTitle:@"+" forState:UIControlStateNormal];
+    upButton.frame = buttonFrame;
+    [upButton setImage:[UIImage imageNamed:@"arrow-up-brown.png"] forState:UIControlStateNormal];
     [upButton addTarget:self action:@selector(upButtonPressed)
      forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:upButton];
@@ -51,8 +44,8 @@
     // setup down button
     buttonFrame.origin.y = frame.origin.y + buttonFrame.size.height;
     UIButton *downButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self stylizeUpDownButton:downButton withFrame:buttonFrame];
-    [downButton setTitle:@"-" forState:UIControlStateNormal];
+    downButton.frame = buttonFrame;
+    [downButton setImage:[UIImage imageNamed:@"arrow-down-brown.png"] forState:UIControlStateNormal];
     [downButton addTarget:self action:@selector(downButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:downButton];
     

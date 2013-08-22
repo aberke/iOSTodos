@@ -69,9 +69,9 @@
     
     return YES;
 }
-- (BOOL) moveUpTodoItem:(NSObject<TodoItem> *)item{    
+- (BOOL) moveUpTodoItem:(NSObject<TodoItem> *)item{
     NSUInteger index = [self.undoneItems indexOfObject:item.itemString];
-    if(index == NSNotFound || (index == 0)){
+    if(([self.undoneItems count] < 2) || index == NSNotFound || (index == 0)){
         return NO;
     }
     [self.undoneItems exchangeObjectAtIndex:index withObjectAtIndex:index-1];
@@ -80,7 +80,7 @@
 }
 - (BOOL) moveDownTodoItem:(NSObject<TodoItem> *)item{
     NSUInteger index = [self.undoneItems indexOfObject:item.itemString];
-    if(index == NSNotFound || (index > ([self.undoneItems count] - 2))){
+    if(([self.undoneItems count] < 2) || index == NSNotFound || (index > ([self.undoneItems count] - 2))){
         return NO;
     }
     [self.undoneItems exchangeObjectAtIndex:index withObjectAtIndex:index+1];
