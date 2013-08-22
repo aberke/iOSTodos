@@ -15,6 +15,7 @@
 		A896224217C5CB0F00C2389E /* transparent-slider.png in Resources */ = {isa = PBXBuildFile; fileRef = A896224117C5CB0F00C2389E /* transparent-slider.png */; };
 		A896224917C64CE000C2389E /* arrow-down-brown.png in Resources */ = {isa = PBXBuildFile; fileRef = A896224717C64CE000C2389E /* arrow-down-brown.png */; };
 		A896224A17C64CE000C2389E /* arrow-up-brown.png in Resources */ = {isa = PBXBuildFile; fileRef = A896224817C64CE000C2389E /* arrow-up-brown.png */; };
+		A896224D17C690A800C2389E /* UIButtonExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A896224C17C690A700C2389E /* UIButtonExtension.m */; };
 		A8D046B617BB4017001E9657 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B517BB4017001E9657 /* UIKit.framework */; };
 		A8D046B817BB4017001E9657 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B717BB4017001E9657 /* Foundation.framework */; };
 		A8D046BA17BB4017001E9657 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D046B917BB4017001E9657 /* CoreGraphics.framework */; };
@@ -56,6 +57,8 @@
 		A896224117C5CB0F00C2389E /* transparent-slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "transparent-slider.png"; path = "images/transparent-slider.png"; sourceTree = SOURCE_ROOT; };
 		A896224717C64CE000C2389E /* arrow-down-brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-down-brown.png"; path = "images/arrow-down-brown.png"; sourceTree = SOURCE_ROOT; };
 		A896224817C64CE000C2389E /* arrow-up-brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-up-brown.png"; path = "images/arrow-up-brown.png"; sourceTree = SOURCE_ROOT; };
+		A896224B17C690A700C2389E /* UIButtonExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtonExtension.h; sourceTree = "<group>"; };
+		A896224C17C690A700C2389E /* UIButtonExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIButtonExtension.m; sourceTree = "<group>"; };
 		A8D046B217BB4017001E9657 /* todos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D046B517BB4017001E9657 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A8D046B717BB4017001E9657 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,6 +169,8 @@
 				A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */,
 				A896222B17C5993A00C2389E /* TodoUIColors.h */,
 				A896222C17C5993A00C2389E /* TodoUIColors.m */,
+				A896224B17C690A700C2389E /* UIButtonExtension.h */,
+				A896224C17C690A700C2389E /* UIButtonExtension.m */,
 				A8D046EA17BB407C001E9657 /* MainViewController.h */,
 				A8D046EB17BB407C001E9657 /* MainViewController.m */,
 				A896222817C5499600C2389E /* images */,
@@ -330,6 +335,7 @@
 				A8D046FF17C1B55C001E9657 /* undoneTodoItem.m in Sources */,
 				A896222617C3106500C2389E /* DoneTodoItem.m in Sources */,
 				A896222D17C5993A00C2389E /* TodoUIColors.m in Sources */,
+				A896224D17C690A800C2389E /* UIButtonExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

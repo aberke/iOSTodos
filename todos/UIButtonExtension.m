@@ -8,24 +8,18 @@
 
 #import "UIButtonExtension.h"
 
-@implementation UIButtonExtension
+@implementation UIButton (UIButtonExtension)
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
++(UIButton *)buttonWithFrame:(CGRect)frame withImageName:(NSString *)imageName withCallback:(SEL)callback withTarget:(id)actionTarget{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    
+    button.backgroundColor = [UIColor clearColor];
+    [button setImage: [UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    
+    [button addTarget:actionTarget action:callback forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

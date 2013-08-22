@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIButtonExtension : UIButton
+@interface UIButton (UIButtonExtension)
+
++(UIButton *)buttonWithFrame:(CGRect)frame withImageName:(NSString *)imageName withCallback:(SEL)callback withTarget:(id)actionTarget;
 
 @end

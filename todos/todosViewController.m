@@ -137,7 +137,7 @@
 - (void) redrawTodos{
     
     // setup rectangle to be reused as frame for todos
-    CGRect todoItemRect = CGRectMake(0, 0,todoItemWidth, doneTodoItemHeight);
+    CGRect todoItemRect = CGRectMake(todoItemLabelOriginX, 0,todoItemLabelWidth, doneTodoItemHeight);
     
     // remove all the old views
     for(UIView *subview in [self.todosArea subviews]) {
@@ -148,13 +148,12 @@
     for(int i = 0; i < [self.doneItems count]; i++){
         
         DoneTodoItem *item = [[DoneTodoItem alloc] initWithFrame: todoItemRect withString:[self.doneItems objectAtIndex:i]];
-        
         [self.todosArea addSubview:item];
         
         // make sure next label positioned below last
         todoItemRect.origin.y += doneTodoItemHeight;
     }
-    todoItemRect.size.height = undoneTodoItemHeight;
+    todoItemRect = CGRectMake(0, todoItemRect.origin.y,todoItemWidth, undoneTodoItemHeight);
     
     // add the undone todos
     for(int i = 0; i < [self.undoneItems count]; i++){
