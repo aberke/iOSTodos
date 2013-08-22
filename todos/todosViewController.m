@@ -28,7 +28,6 @@
         self.containerView = [[UIView alloc] initWithFrame:CGRectMake(todosContainerOriginX, todosContainerOriginY, todosContainerWidth, todosContainerHeight)];
         self.containerView.layer.backgroundColor = [UIColor backgroundYellowColor].CGColor;
         self.containerView.layer.borderColor = [UIColor brownColor].CGColor;
-        //self.containerView.layer.borderWidth = 1.0;
         
         [self setupCallbacks];
         [self setupTodos];
@@ -106,20 +105,21 @@
 }
 
 
-- (void) setupTodos{
-    float countLabelWidth = (todosAreaContentWidth)/2;
-    // setup labels
-    [self setupDoneCountLabelWithFrame:CGRectMake(todosAreaMargin, 0, countLabelWidth, 30.0f)];
-    [self setupUndoneCountLabelWithFrame:CGRectMake(countLabelWidth+todosAreaMargin, 0, countLabelWidth, 30.0f)];
-    
+- (void) setupTodos{    
     // setup arrays
     self.doneItems = [[NSMutableArray alloc] init];
     self.undoneItems = [[NSMutableArray alloc] init];
     
+    // setup labels
+    [self setupDoneCountLabelWithFrame:CGRectMake(todosAreaMargin, 0, countLabelWidth, countLabelHeight)];
+    [self setupUndoneCountLabelWithFrame:CGRectMake(countLabelWidth+todosAreaMargin, 0, countLabelWidth, countLabelHeight)];
+    UILabel *underline = [[UILabel alloc] initWithFrame:CGRectMake(todosAreaMargin, countLabelHeight, todosAreaContentWidth, countLabelUnderlineHeight)];
+    underline.backgroundColor = [UIColor brownColor];
+    [self.containerView addSubview:underline];
+    
     // setup todos area
-    self.todosArea = [[UIScrollView alloc] initWithFrame:CGRectMake(todosAreaMargin, 30.0f, todosAreaContentWidth, todosAreaContentHeight)];
-    self.todosArea.layer.backgroundColor = [UIColor yellowColor].CGColor;
-    //self.todosArea.layer.borderWidth = 2;
+    self.todosArea = [[UIScrollView alloc] initWithFrame:CGRectMake(todosAreaMargin, (countLabelUnderlineHeight + countLabelHeight), todosAreaContentWidth, todosAreaContentHeight)];
+    self.todosArea.layer.backgroundColor = [UIColor backgroundYellowColor].CGColor;
     self.todosArea.layer.borderColor = [UIColor brownColor].CGColor;
     [self.containerView addSubview:self.todosArea];
     
@@ -135,11 +135,9 @@
     return item;
 }
 - (void) redrawTodos{
-    // set scroll view height to match content
-    CGFloat scrollViewHeight = 5.0f;
     
     // setup rectangle to be reused as frame for todos
-    CGRect todoItemRect = CGRectMake(todoItemMargin, todoItemMargin,todoItemWidth, doneTodoItemHeight);
+    CGRect todoItemRect = CGRectMake(0, 0,todoItemWidth, doneTodoItemHeight);
     
     // remove all the old views
     for(UIView *subview in [self.todosArea subviews]) {
@@ -153,9 +151,8 @@
         
         [self.todosArea addSubview:item];
         
-        // make sure next label positioned below last and can scroll to this new label
+        // make sure next label positioned below last
         todoItemRect.origin.y += doneTodoItemHeight;
-        scrollViewHeight += doneTodoItemHeight;
     }
     todoItemRect.size.height = undoneTodoItemHeight;
     
@@ -165,12 +162,11 @@
         undoneTodoItem *item = [self createUndoneTodoItemWithFrame:todoItemRect withString:[self.undoneItems objectAtIndex:i]];
         [self.todosArea addSubview:item];
         
-        // make sure next label positioned below last and can scroll to this new label
+        // make sure next label positioned below last
         todoItemRect.origin.y += undoneTodoItemHeight;
-        scrollViewHeight += undoneTodoItemHeight;
     }
     // set content size of scroll view
-    [self.todosArea setContentSize:(CGSizeMake(todosAreaContentWidth, scrollViewHeight))];
+    [self.todosArea setContentSize:CGSizeMake(todosAreaContentWidth, todoItemRect.origin.y)];
 }
 
 

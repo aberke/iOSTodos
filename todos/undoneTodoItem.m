@@ -89,7 +89,7 @@
     self = [self initWithFrame:frame];
     if (self){
         
-        self.layer.borderWidth = 1;
+        //self.layer.borderWidth = 1;
         self.layer.borderColor = [UIColor blackColor].CGColor;
         
         self.itemString = itemString;
@@ -97,27 +97,25 @@
         
         float todoItemButtonWidth = 20.0f;
         float todoItemButtonHeight = 20.0f;
-        float todoItemButtonMargin = 5.0f;
+        float todoItemMargin = 10.0f;
         
         float upDownButtonsWidth = 30.0f;
-        float upDownButtonsHeight = frame.size.height - (2*todoItemButtonMargin);
+        float upDownButtonsHeight = frame.size.height - (2*todoItemMargin);
         
-        float todoItemSliderWidth = frame.size.width - (3*todoItemButtonWidth);
-        float todoItemLabelWidth = frame.size.width - (4*todoItemButtonWidth + todoItemButtonMargin);
+        float todoItemLabelWidth = frame.size.width*(2.0/3);
+        float todoItemSliderWidth = todoItemLabelWidth + todoItemButtonWidth;
         
         float itemOriginX = 0.0f;
         
-        [self setupUpDownButtonsWithFrame:CGRectMake(itemOriginX,todoItemButtonMargin,upDownButtonsWidth,upDownButtonsHeight)];
-        itemOriginX += upDownButtonsWidth;
-        
-        [self setupSliderWithFrame:CGRectMake(itemOriginX,5.0, todoItemSliderWidth, 10.0)];
-        itemOriginX += (todoItemButtonWidth + todoItemButtonMargin);
-        
-        [self setupLabelWithFrame:CGRectMake((itemOriginX),0,todoItemLabelWidth, (frame.size.height))];
-        itemOriginX += todoItemLabelWidth;
+        [self setupUpDownButtonsWithFrame:CGRectMake(itemOriginX,todoItemMargin,upDownButtonsWidth,upDownButtonsHeight)];
+        itemOriginX += (upDownButtonsWidth +todoItemMargin);
         
         
-        [self setupDeleteButtonWithFrame:CGRectMake(itemOriginX, todoItemButtonMargin, todoItemButtonWidth, todoItemButtonHeight)];
+        [self setupLabelWithFrame:CGRectMake((itemOriginX+todoItemButtonWidth),0,todoItemLabelWidth, (frame.size.height))];
+        [self setupSliderWithFrame:CGRectMake(itemOriginX,todoItemMargin, todoItemSliderWidth, 10.0)];
+        itemOriginX += (todoItemSliderWidth+todoItemButtonWidth);
+        
+        [self setupDeleteButtonWithFrame:CGRectMake(itemOriginX, todoItemMargin, todoItemButtonWidth, todoItemButtonHeight)];
         
     }
     return self;
