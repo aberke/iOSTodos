@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TodoItem.h"
 
-@interface DoneTodoItem : UIView <TodoItem>
+@interface DoneTodoItem : TodoItem
 
 @property NSString *itemString;
 

@@ -45,7 +45,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (BOOL) completeTodoItem:(NSObject<TodoItem> *)item{
+- (BOOL) completeTodoItem:(TodoItem *)item{
     
     self.undoneCount --;
     self.doneCount ++;
@@ -58,7 +58,7 @@
         
     return YES;
 }
-- (BOOL) deleteTodoItem:(NSObject<TodoItem> *)item{
+- (BOOL) deleteTodoItem:(TodoItem *)item{
     
     self.undoneCount --;
     [self updateUndoneCountLabel];
@@ -67,7 +67,7 @@
     
     return YES;
 }
-- (BOOL) moveUpTodoItem:(NSObject<TodoItem> *)item{
+- (BOOL) moveUpTodoItem:(TodoItem *)item{
     NSUInteger index = [self.undoneItems indexOfObject:item.itemString];
     if(([self.undoneItems count] < 2) || index == NSNotFound || (index == 0)){
         return NO;
@@ -76,7 +76,7 @@
     [self redrawTodos];
     return YES;
 }
-- (BOOL) moveDownTodoItem:(NSObject<TodoItem> *)item{
+- (BOOL) moveDownTodoItem:(TodoItem *)item{
     NSUInteger index = [self.undoneItems indexOfObject:item.itemString];
     if(([self.undoneItems count] < 2) || index == NSNotFound || (index > ([self.undoneItems count] - 2))){
         return NO;
@@ -89,16 +89,16 @@
     // use weakself in blocks to avoid strong reference cycles
     todosViewController * __weak weakSelf = self;
     
-    self.itemDoneCallback = ^(NSObject<TodoItem>* item){
+    self.itemDoneCallback = ^(TodoItem *item){
         return [weakSelf completeTodoItem:item];
     };
-    self.itemDeletedCallback = ^(NSObject<TodoItem>* item){
+    self.itemDeletedCallback = ^(TodoItem *item){
         return [weakSelf deleteTodoItem:item];
     };
-    self.itemUpCallback = ^(NSObject<TodoItem>* item){
+    self.itemUpCallback = ^(TodoItem *item){
         return [weakSelf moveUpTodoItem:item];
     };
-    self.itemDownCallback = ^(NSObject<TodoItem>* item){
+    self.itemDownCallback = ^(TodoItem *item){
         return [weakSelf moveDownTodoItem:item];
     };
 }

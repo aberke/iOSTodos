@@ -12,17 +12,11 @@
 #import "UIButtonExtension.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation undoneTodoItem: UIView
+@implementation undoneTodoItem
 
 - (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString{
-    self = [self initWithFrame:frame];
+    self = [super initWithFrame:frame withString:itemString];
     if (self){
-        
-        //self.layer.borderWidth = 1;
-        self.layer.borderColor = [UIColor blackColor].CGColor;
-        
-        self.itemString = itemString;
-        
         
         float todoItemButtonWidth = 20.0f;
         float todoItemButtonHeight = 20.0f;
@@ -57,13 +51,9 @@
     }
     return self;
 }
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    return self;
-}
 
 - (void) setupDeleteButtonWithFrame:(CGRect) frame{
-    UIButton *button = [UIButton buttonWithFrame:frame withImageName:@"delete_icon.png" withCallback:@selector(deleteButtonPressed) withTarget:self];
+    UIButton *button = [UIButton buttonWithFrame:frame withImageName:@"delete_icon.png" withCallback:@selector(deleteItem) withTarget:self];
     
     //add the button to the view
     [self addSubview:button];
@@ -125,7 +115,7 @@
     }
 }
 
-- (void) deleteButtonPressed {
+- (void) deleteItem {
     NSString *dialogMessage = [NSString stringWithFormat:@"You can do it... %@",self.itemString];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete this item?" message:dialogMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Just Delete it",nil];
     [alert show];

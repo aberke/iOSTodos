@@ -10,10 +10,9 @@
 #import "TodoItem.h"
 //#import "Constants.h"
 
-@interface undoneTodoItem : UIView <TodoItem>
+@interface undoneTodoItem : TodoItem
 
 @property (nonatomic, copy) ItemCallback doneCallback;
-@property (nonatomic, copy) ItemCallback deletedCallback;
 @property (nonatomic, copy) ItemCallback upCallback;
 @property (nonatomic, copy) ItemCallback downCallback;
 
@@ -22,8 +21,7 @@
 
 - (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString;
 
-- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(BOOL(^)(NSObject<TodoItem>*))doneCallback withDeleteCallback:(BOOL(^)(NSObject<TodoItem>*))deleteCallback;
+- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(BOOL(^)(TodoItem *))doneCallback withDeleteCallback:(BOOL(^)(TodoItem *))deleteCallback;
 
-- (void) deleteButtonPressed;
 
 @end
