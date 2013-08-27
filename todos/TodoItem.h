@@ -19,7 +19,14 @@ typedef BOOL(^ItemCallback)(TodoItem *item);
 @property (nonatomic, copy) ItemCallback deletedCallback;
 
 @property NSString *itemString;
+- (void) setupDeleteButton;
 - (void) deleteItem;
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
+
+#pragma mark view helper methods
+- (CGFloat)height;
+
+- (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString;
 
 @end

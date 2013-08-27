@@ -19,7 +19,6 @@
     if (self){
         
         float todoItemButtonWidth = 20.0f;
-        float todoItemButtonHeight = 20.0f;
         float todoItemMargin = 10.0f;
         
         float upDownButtonsWidth = 30.0f;
@@ -38,16 +37,6 @@
         [self setupSliderWithFrame:CGRectMake(itemOriginX,todoItemMargin, todoItemSliderWidth, 10.0)];
         itemOriginX += (todoItemSliderWidth+todoItemButtonWidth);
         
-        [self setupDeleteButtonWithFrame:CGRectMake(itemOriginX, todoItemMargin, todoItemButtonWidth, todoItemButtonHeight)];
-        
-    }
-    return self;
-}
-- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(ItemCallback)doneCallback withDeleteCallback:(ItemCallback)deleteCallback{
-    self = [self initWithFrame:frame withString:itemString];
-    if (self) {
-        self.doneCallback = doneCallback;
-        self.deletedCallback = deleteCallback;
     }
     return self;
 }
@@ -112,18 +101,6 @@
 -(void)downButtonPressed{
     if (self.downCallback){
         self.downCallback(self);
-    }
-}
-
-- (void) deleteItem {
-    NSString *dialogMessage = [NSString stringWithFormat:@"You can do it... %@",self.itemString];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete this item?" message:dialogMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Just Delete it",nil];
-    [alert show];
-}
-/* called when user answers alert that's shown when delete button pressed */
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1 && self.deletedCallback) {
-        self.deletedCallback(self);
     }
 }
 

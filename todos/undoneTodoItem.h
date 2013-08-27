@@ -21,7 +21,5 @@
 
 - (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString;
 
-- (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString withDoneCallback:(BOOL(^)(TodoItem *))doneCallback withDeleteCallback:(BOOL(^)(TodoItem *))deleteCallback;
-
 
 @end

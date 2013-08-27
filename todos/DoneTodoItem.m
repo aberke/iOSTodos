@@ -22,7 +22,7 @@
 }
 
 - (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString{
-    self = [self initWithFrame:frame];
+    self = [super initWithFrame:frame withString:itemString];
     if (self) {
         self.itemString = itemString;
         [self setupLabelwithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
@@ -30,13 +30,5 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

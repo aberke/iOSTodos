@@ -58,13 +58,21 @@
         
     return YES;
 }
-- (BOOL) deleteTodoItem:(TodoItem *)item{
-    
-    self.undoneCount --;
-    [self updateUndoneCountLabel];
-    [self.undoneItems removeObject:item.itemString];
-    [self redrawTodos];
-    
+- (BOOL) deleteTodoItem:(TodoItem *)item{   
+    if ([item isMemberOfClass:[undoneTodoItem class]]){
+        self.undoneCount --;
+        [self updateUndoneCountLabel];
+        [self.undoneItems removeObject:item.itemString];
+    }
+    else if ([item isMemberOfClass:[DoneTodoItem class]]){
+        self.doneCount --;
+        [self updateDoneCountLabel];
+        [self.doneItems removeObject:item.itemString];
+    }
+    else {
+        return NO;
+    }
+    [self redrawTodos];    
     return YES;
 }
 - (BOOL) moveUpTodoItem:(TodoItem *)item{
@@ -123,9 +131,15 @@
     [self.containerView addSubview:self.todosArea];
     
 }
+- (id)createDoneTodoItemWithFrame:(CGRect)frame withString:(NSString *)string{
+    DoneTodoItem *item = [[DoneTodoItem alloc] initWithFrame: frame withString:string];
+    // configure callbacks
+    [item setDeletedCallback:self.itemDeletedCallback];
+    return item;
+}
 - (id)createUndoneTodoItemWithFrame:(CGRect)frame withString:(NSString *)string{
-   undoneTodoItem *item = [[undoneTodoItem alloc] initWithFrame: frame withString:string];
-    // setup all the callbacks
+    undoneTodoItem *item = [[undoneTodoItem alloc] initWithFrame: frame withString:string];
+    // configure callbacks
     [item setDeletedCallback:self.itemDeletedCallback];
     [item setDoneCallback:self.itemDoneCallback];
     [item setUpCallback:self.itemUpCallback];
@@ -133,10 +147,11 @@
     
     return item;
 }
+
 - (void) redrawTodos{
     
     // setup rectangle to be reused as frame for todos
-    CGRect todoItemRect = CGRectMake(todoItemLabelOriginX, 0,todoItemLabelWidth, doneTodoItemHeight);
+    CGRect todoItemRect = CGRectMake(0, 0,todoItemWidth, doneTodoItemHeight);
     
     // remove all the old views
     for(UIView *subview in [self.todosArea subviews]) {
@@ -146,11 +161,11 @@
     // add the done todos
     for(int i = 0; i < [self.doneItems count]; i++){
         
-        DoneTodoItem *item = [[DoneTodoItem alloc] initWithFrame: todoItemRect withString:[self.doneItems objectAtIndex:i]];
+        DoneTodoItem *item = [self createDoneTodoItemWithFrame: todoItemRect withString:[self.doneItems objectAtIndex:i]];
         [self.todosArea addSubview:item];
         
         // make sure next label positioned below last
-        todoItemRect.origin.y += doneTodoItemHeight;
+        todoItemRect.origin.y += [item height];
     }
     todoItemRect = CGRectMake(0, todoItemRect.origin.y,todoItemWidth, undoneTodoItemHeight);
     
@@ -161,7 +176,7 @@
         [self.todosArea addSubview:item];
         
         // make sure next label positioned below last
-        todoItemRect.origin.y += undoneTodoItemHeight;
+        todoItemRect.origin.y += [item height];
     }
     // set content size of scroll view
     [self.todosArea setContentSize:CGSizeMake(todosAreaContentWidth, todoItemRect.origin.y)];
