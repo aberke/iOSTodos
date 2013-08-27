@@ -11,33 +11,37 @@
 #import "UIButtonExtension.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @implementation TodoItem
 
 - (id) initWithFrame:(CGRect)frame withString:(NSString *)itemString{
     self = [super initWithFrame:frame];
     if (self) {
-    
-        self.layer.borderWidth = 1;
-        self.layer.borderColor = [UIColor blackColor].CGColor;
+        
+        [self configureConstants];
         
         self.itemString = itemString;
         [self setupDeleteButton];
     }
     return self;
 }
-
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+- (void) configureConstants{
+    _labelMargin = 60.0f;
+    _deleteButtonSize = 20.0f;
 }
-
+- (void) setupLabel {
+    float labelWidth = (self.frame.size.width - (2*_labelMargin));
+    _label = [[UILabel alloc] initWithFrame:CGRectMake(_labelMargin, 0, labelWidth, self.frame.size.height)];
+    _label.text = self.itemString;
+    _label.backgroundColor = [UIColor clearColor];
+    [self addSubview:_label];
+    
+}
 - (void) setupDeleteButton {
-    float buttonSize = 20.0;
-    float topMargin = (self.frame.size.height - buttonSize)/2;
-    CGRect buttonFrame = CGRectMake(self.frame.size.width - (buttonSize + 5.0), topMargin, buttonSize, buttonSize);
+    _deleteButtonSize = 20.0f;
+    float leftMargin = self.frame.size.width - (_deleteButtonSize + 5.0);
+    float topMargin = (self.frame.size.height - _deleteButtonSize)/2;
+    CGRect buttonFrame = CGRectMake(leftMargin, topMargin, _deleteButtonSize, _deleteButtonSize);
     UIButton *button = [UIButton buttonWithFrame:buttonFrame withImageName:@"delete_icon.png" withCallback:@selector(deleteItem) withTarget:self];
     
     //add the button to the view

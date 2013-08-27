@@ -10,7 +10,7 @@
 #import "TodoItem.h"
 //#import "Constants.h"
 
-@interface undoneTodoItem : TodoItem
+@interface undoneTodoItem : TodoItem 
 
 @property (nonatomic, copy) ItemCallback doneCallback;
 @property (nonatomic, copy) ItemCallback upCallback;

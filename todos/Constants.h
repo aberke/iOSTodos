@@ -31,7 +31,6 @@ float doneTodoItemHeight = 20.0f;
 /* specifically for TodoItem */
 float todoItemButtonWidth = 20.0f;
 float todoItemButtonHeight = 20.0f;
-float todoItemMargin = 10.0f;
 
 float upDownButtonsWidth = 30.0f;
 float upDownButtonsHeight = 20.0f;

@@ -10,15 +10,22 @@
 
 @class TodoItem;
 
-
 typedef BOOL(^ItemCallback)(TodoItem *item);
 
 
-@interface TodoItem : UIView
+@interface TodoItem : UIView {
+# pragma mark UIconstants
+    float _labelMargin;// = 60.0f;
+    float _deleteButtonSize;// = 20.0f;
+    
+# pragma mark UIobjects
+    UILabel *_label;
+}
 
 @property (nonatomic, copy) ItemCallback deletedCallback;
 
 @property NSString *itemString;
+- (void) setupLabel;
 - (void) setupDeleteButton;
 - (void) deleteItem;
 - (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
@@ -26,7 +33,8 @@ typedef BOOL(^ItemCallback)(TodoItem *item);
 #pragma mark view helper methods
 - (CGFloat)height;
 
-- (id)initWithFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame withString:(NSString *)itemString;
+
+
 
 @end
