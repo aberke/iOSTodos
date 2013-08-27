@@ -13,7 +13,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Constants.h"
 
-@interface todosViewController ()
+@interface todosViewController () {
+    UILabel *_undoneCountLabel;
+    UILabel *_doneCountLabel;
+}
 
 @end
 
@@ -191,11 +194,11 @@
     [self redrawTodos];
 }
 - (void) updateDoneCountLabel {
-    self.doneCountLabel.text = [NSString stringWithFormat:@"Done: %i", self.doneCount];
+    _doneCountLabel.text = [NSString stringWithFormat:@"Done: %i", self.doneCount];
 }
 
 - (void) updateUndoneCountLabel {
-    self.undoneCountLabel.text = [NSString stringWithFormat:@"Undone: %i", self.undoneCount];
+    _undoneCountLabel.text = [NSString stringWithFormat:@"Undone: %i", self.undoneCount];
 }
 -(UILabel *) stylizeCountLabelWithFrame:(CGRect)frame{
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
@@ -204,16 +207,16 @@
     return label;
 }
 - (void) setupDoneCountLabelWithFrame:(CGRect)frame {
-    self.doneCountLabel = [self stylizeCountLabelWithFrame:frame];
-    self.doneCountLabel.textColor = [UIColor brownColor];
-    [self.containerView addSubview:self.doneCountLabel];
+    _doneCountLabel = [self stylizeCountLabelWithFrame:frame];
+    _doneCountLabel.textColor = [UIColor brownColor];
+    [self.containerView addSubview:_doneCountLabel];
     [self updateDoneCountLabel];
 }
 
 - (void)setupUndoneCountLabelWithFrame:(CGRect)frame {
-    self.undoneCountLabel = [self stylizeCountLabelWithFrame:frame];
-    self.undoneCountLabel.textColor = [UIColor redColor];
-    [self.containerView addSubview:self.undoneCountLabel];
+    _undoneCountLabel = [self stylizeCountLabelWithFrame:frame];
+    _undoneCountLabel.textColor = [UIColor redColor];
+    [self.containerView addSubview:_undoneCountLabel];
     [self updateUndoneCountLabel];
 }
 

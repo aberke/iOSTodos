@@ -19,11 +19,9 @@
 
 @property (nonatomic, strong) UIView *containerView;
 
-@property (nonatomic, strong) UILabel *undoneCountLabel;
 @property int undoneCount;
 @property (nonatomic, strong) NSMutableArray *undoneItems;
 
-@property (nonatomic, strong) UILabel *doneCountLabel;
 @property int doneCount;
 @property (nonatomic, strong) NSMutableArray *doneItems;
 
