@@ -56,15 +56,15 @@
 		A896222517C3106500C2389E /* DoneTodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneTodoItem.m; sourceTree = "<group>"; };
 		A896222717C3B9DF00C2389E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A896222917C54A1F00C2389E /* yellowslide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowslide.png; path = images/yellowslide.png; sourceTree = SOURCE_ROOT; };
-		A896222B17C5993A00C2389E /* TodoUIColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoUIColors.h; sourceTree = "<group>"; };
-		A896222C17C5993A00C2389E /* TodoUIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoUIColors.m; sourceTree = "<group>"; };
+		A896222B17C5993A00C2389E /* TodoUIColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoUIColors.h; path = todos/TodoUIColors.h; sourceTree = "<group>"; };
+		A896222C17C5993A00C2389E /* TodoUIColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoUIColors.m; path = todos/TodoUIColors.m; sourceTree = "<group>"; };
 		A896223017C5C50C00C2389E /* icon-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-checkmark.png"; path = "images/icon-checkmark.png"; sourceTree = SOURCE_ROOT; };
 		A896223217C5C58C00C2389E /* delete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_icon.png; path = images/delete_icon.png; sourceTree = SOURCE_ROOT; };
 		A896224117C5CB0F00C2389E /* transparent-slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "transparent-slider.png"; path = "images/transparent-slider.png"; sourceTree = SOURCE_ROOT; };
 		A896224717C64CE000C2389E /* arrow-down-brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-down-brown.png"; path = "images/arrow-down-brown.png"; sourceTree = SOURCE_ROOT; };
 		A896224817C64CE000C2389E /* arrow-up-brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-up-brown.png"; path = "images/arrow-up-brown.png"; sourceTree = SOURCE_ROOT; };
-		A896224B17C690A700C2389E /* UIButtonExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtonExtension.h; sourceTree = "<group>"; };
-		A896224C17C690A700C2389E /* UIButtonExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIButtonExtension.m; sourceTree = "<group>"; };
+		A896224B17C690A700C2389E /* UIButtonExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIButtonExtension.h; path = todos/UIButtonExtension.h; sourceTree = "<group>"; };
+		A896224C17C690A700C2389E /* UIButtonExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIButtonExtension.m; path = todos/UIButtonExtension.m; sourceTree = "<group>"; };
 		A8D046B217BB4017001E9657 /* todos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D046B517BB4017001E9657 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A8D046B717BB4017001E9657 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,6 +116,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A86A4FD117CD7A7600AB2DE3 /* UIButtonExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A896224B17C690A700C2389E /* UIButtonExtension.h */,
+				A896224C17C690A700C2389E /* UIButtonExtension.m */,
+			);
+			name = UIButtonExtension;
+			sourceTree = "<group>";
+		};
+		A86A4FD217CD7A9F00AB2DE3 /* TodoUIColors */ = {
+			isa = PBXGroup;
+			children = (
+				A896222B17C5993A00C2389E /* TodoUIColors.h */,
+				A896222C17C5993A00C2389E /* TodoUIColors.m */,
+			);
+			name = TodoUIColors;
+			sourceTree = "<group>";
+		};
 		A896222817C5499600C2389E /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +150,8 @@
 		A8D046A917BB4017001E9657 = {
 			isa = PBXGroup;
 			children = (
+				A86A4FD217CD7A9F00AB2DE3 /* TodoUIColors */,
+				A86A4FD117CD7A7600AB2DE3 /* UIButtonExtension */,
 				A8D046BB17BB4017001E9657 /* todos */,
 				A8D046D917BB4017001E9657 /* todosTests */,
 				A8D046B417BB4017001E9657 /* Frameworks */,
@@ -175,10 +195,6 @@
 				A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */,
 				A896222417C3106500C2389E /* DoneTodoItem.h */,
 				A896222517C3106500C2389E /* DoneTodoItem.m */,
-				A896222B17C5993A00C2389E /* TodoUIColors.h */,
-				A896222C17C5993A00C2389E /* TodoUIColors.m */,
-				A896224B17C690A700C2389E /* UIButtonExtension.h */,
-				A896224C17C690A700C2389E /* UIButtonExtension.m */,
 				A8D046EA17BB407C001E9657 /* MainViewController.h */,
 				A8D046EB17BB407C001E9657 /* MainViewController.m */,
 				A896222817C5499600C2389E /* images */,
