@@ -20,14 +20,15 @@
 @property (nonatomic, strong) UIView *containerView;
 
 @property int undoneCount;
-@property (nonatomic, strong) NSMutableArray *undoneItems;
+@property (nonatomic, strong) NSMutableArray *undoneItems; // array of TodoEntry's
 
 @property int doneCount;
-@property (nonatomic, strong) NSMutableArray *doneItems;
+@property (nonatomic, strong) NSMutableArray *doneItems; // array of TodoEntry's
 
 
 @property (nonatomic, strong) UIScrollView *todosArea;
 
-- (void) addTodo:(NSString *)todoString;
+- (void) addUndoneTodo:(NSString *)todoString;
+- (void) addDoneTodo:(NSString *)todoString;
 
 @end

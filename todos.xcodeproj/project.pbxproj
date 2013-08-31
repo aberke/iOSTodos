@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A86A4FCD17CAF99A00AB2DE3 /* TodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A4FCC17CAF99A00AB2DE3 /* TodoItem.m */; };
 		A86A4FD017CB90C900AB2DE3 /* TodoDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A4FCF17CB90C800AB2DE3 /* TodoDocument.m */; };
+		A86A4FD517CD867E00AB2DE3 /* TodoEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A4FD417CD867E00AB2DE3 /* TodoEntry.m */; };
 		A896222617C3106500C2389E /* DoneTodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A896222517C3106500C2389E /* DoneTodoItem.m */; };
 		A896222A17C54A1F00C2389E /* yellowslide.png in Resources */ = {isa = PBXBuildFile; fileRef = A896222917C54A1F00C2389E /* yellowslide.png */; };
 		A896222D17C5993A00C2389E /* TodoUIColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A896222C17C5993A00C2389E /* TodoUIColors.m */; };
@@ -52,6 +53,8 @@
 		A86A4FCC17CAF99A00AB2DE3 /* TodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoItem.m; sourceTree = "<group>"; };
 		A86A4FCE17CB90C800AB2DE3 /* TodoDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDocument.h; sourceTree = "<group>"; };
 		A86A4FCF17CB90C800AB2DE3 /* TodoDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDocument.m; sourceTree = "<group>"; };
+		A86A4FD317CD867E00AB2DE3 /* TodoEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoEntry.h; sourceTree = "<group>"; };
+		A86A4FD417CD867E00AB2DE3 /* TodoEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoEntry.m; sourceTree = "<group>"; };
 		A896222417C3106500C2389E /* DoneTodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneTodoItem.h; sourceTree = "<group>"; };
 		A896222517C3106500C2389E /* DoneTodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneTodoItem.m; sourceTree = "<group>"; };
 		A896222717C3B9DF00C2389E /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				A8D046C517BB4017001E9657 /* todosAppDelegate.m */,
 				A8D046F917BDD66A001E9657 /* todosViewController.h */,
 				A8D046FA17BDD66A001E9657 /* todosViewController.m */,
+				A86A4FD317CD867E00AB2DE3 /* TodoEntry.h */,
+				A86A4FD417CD867E00AB2DE3 /* TodoEntry.m */,
 				A8D046FD17C1B55C001E9657 /* undoneTodoItem.h */,
 				A8D046FE17C1B55C001E9657 /* undoneTodoItem.m */,
 				A896222417C3106500C2389E /* DoneTodoItem.h */,
@@ -362,6 +367,7 @@
 				A896224D17C690A800C2389E /* UIButtonExtension.m in Sources */,
 				A86A4FCD17CAF99A00AB2DE3 /* TodoItem.m in Sources */,
 				A86A4FD017CB90C900AB2DE3 /* TodoDocument.m in Sources */,
+				A86A4FD517CD867E00AB2DE3 /* TodoEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

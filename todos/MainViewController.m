@@ -74,7 +74,7 @@
 - (void) textFieldReturned{
     NSString *newItem = self.textField.text;
     if([newItem length] > 0){
-        [self.todosViewController addTodo:newItem];
+        [self.todosViewController addUndoneTodo:newItem];
         // erase old item
         self.textField.text = @"";
     }

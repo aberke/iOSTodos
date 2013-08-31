@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#define TODO_DONE_EXTENSION @"done"
+#define TODO_UNDONE_EXTENSION @"undone"
+
 @interface TodoDocument : UIDocument
 
-- (NSString *)itemString;
-- (void)setItemString:(NSString *)itemString;
+@property (nonatomic, strong) NSString *itemString;
+
+@property (nonatomic, strong) NSFileWrapper *fileWrapper;
+
 
 @end
